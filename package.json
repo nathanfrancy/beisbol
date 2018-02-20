@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/nathanfrancy/beisbol/issues"
   },
-  "homepage": "https://github.com/nathanfrancy/beisbol#readme"
+  "homepage": "https://github.com/nathanfrancy/beisbol#readme",
+  "devDependencies": {
+    "fast-csv": "^2.4.1"
+  }
 }
