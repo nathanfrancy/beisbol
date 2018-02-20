@@ -1,0 +1,23 @@
+{
+  "name": "beisbol",
+  "version": "1.0.0",
+  "description": "learn react and build a cool draft tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanfrancy/beisbol.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Nathan Francy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nathanfrancy/beisbol/issues"
+  },
+  "homepage": "https://github.com/nathanfrancy/beisbol#readme"
+}
