@@ -3,64 +3,49 @@ import React from 'react';
 import HitterRow from './HitterRow.jsx';
 import PitcherRow from './PitcherRow.jsx';
 
+const containerStyle = {
+    height: '100%',
+    width: '100%'
+};
+
+const tableStyle = {
+    float: 'left',
+    width: '50%',
+    padding: '24px',
+    height: '100%',
+    overflow: 'auto'
+};
+
 class PlayerTable extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            players: props.players,
-            filterOptions: {
-                isHitters: true,
-                isPitchers: true
-            }
+            pitchers: props.pitchers,
+            hitters: props.hitters
         };
-        this.onChangeHittersCheckbox = this.onChangeHittersCheckbox.bind(this);
-        this.onChangePitchersCheckbox = this.onChangePitchersCheckbox.bind(this);
-    }
-
-    onChangeHittersCheckbox(event) {
-        this.setState({
-            filterOptions: {
-                isHitters: !this.state.filterOptions.isHitters
-            }
-        });
-    }
-
-    onChangePitchersCheckbox(event) {
-        this.setState({
-            filterOptions: {
-                isPitchers: !this.state.filterOptions.isPitchers
-            }
-        });
     }
 
     render() {
-        const players = this.state.players.map((player) => {
-            if (player.isPitcher && this.state.filterOptions.isPitchers) 
-                return <PitcherRow key={player.rank} player={player}/>
-            else if (player.isHitter && this.state.filterOptions.isHitters) 
-                return <HitterRow key={player.rank} player={player} />
-        });
+        const hittersEl = this.state.hitters.map(hitter =>
+            <HitterRow key={hitter.rank} player={hitter} />
+        );
+        const pitchersEl = this.state.pitchers.map(pitcher => 
+            <PitcherRow key={pitcher.rank} player={pitcher} />
+        );
 
         return (
-            <div>
-                <label>
-                    <input type="checkbox" checked={this.state.filterOptions.isHitters} onChange={this.onChangeHittersCheckbox}/>
-                    Hitters
-                </label>
-                <label>
-                    <input type="checkbox" checked={this.state.filterOptions.isPitchers} onChange={this.onChangePitchersCheckbox}/>
-                    Pitchers
-                </label>
-                <table>
-                    {this.state.filterOptions.isHitters &&
-                        HitterRow.getHeaderRow()
-                    }
-                    {this.state.filterOptions.isPitchers &&
-                        PitcherRow.getHeaderRow()
-                    }
+            <div style={containerStyle}>
+                <table style={tableStyle}>
+                    {HitterRow.getHeaderRow()}
                     <tbody>
-                        {players}
+                        {hittersEl}
+                    </tbody>
+                </table>
+                <table style={tableStyle}>
+                    {PitcherRow.getHeaderRow()}
+                    <tbody>
+                        {pitchersEl}
                     </tbody>
                 </table>
             </div>

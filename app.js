@@ -17,4 +17,8 @@ app.get('/players', (req, res, next) => {
         .catch((err) => res.status(500).json(err));
 });
 
-app.listen(3000);
+app.post('/api/pick', (req, res, next) => {
+    res.json(req.body);
+});
+
+app.listen(7272);

@@ -15,19 +15,22 @@ class App extends React.Component {
     componentDidMount() {
         axios.get('/players')
             .then(response => {
+                let players = response.data;
+
                 this.setState({ 
                     initializing: false,
-                    players: response.data
+                    pitchers: players.filter(p => p.isPitcher),
+                    hitters: players.filter(p => p.isHitter)
                 });
             })
-            .catch((err) => { console.log(err); });
+            .catch((err) => { alert(err.message); });
     }
 
     render () {
         if (this.state.initializing) 
             return <div>Loading...</div>
         else
-            return <PlayerTable players={this.state.players} />
+            return <PlayerTable hitters={this.state.hitters} pitchers={this.state.pitchers} />
     }
 }
 

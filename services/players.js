@@ -66,7 +66,7 @@ module.exports.get = () => {
                 players.push(player);
             })
             .on("end", function(){
-                resolve(players.slice(0, 250));
+                resolve(players.slice(0, 500));
             })
             .on("error", function(err) {
                 reject(err);
